@@ -8,15 +8,24 @@
 
 const inputEl = document.querySelector("input");
 
-inputEl.addEventListener("blur", ()=>{
-    if(inputEl.value.length !== Number(inputEl.dataset.length)){
-    inputEl.classList.add("invalid")
-    } else {
-            if(inputEl.classList.contains("invalid")){
+const dataLength = Number(inputEl.dataset.length);
+
+const changeClass = ()=>{
+    if (inputEl.value.length === dataLength){
+        console.log("Равны");
+        inputEl.classList.add("valid");
+        if(inputEl.classList.contains("invalid")){
             inputEl.classList.remove("invalid");
-            inputEl.classList.add("valid");
-            }
+        } 
+    } else {
+        console.log("Не равны");
+        inputEl.classList.add("invalid");
+        if(inputEl.classList.contains("valid")){
+            inputEl.classList.remove("valid");
         }
-    });
+    } 
+}
+
+inputEl.addEventListener("blur", changeClass);
 
 
