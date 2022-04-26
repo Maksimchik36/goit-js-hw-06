@@ -31,16 +31,18 @@ btnCreateRef.addEventListener("click", () => {
 
   let newElements = [];
   for (let i = Number(inputRef.min); i <= amount; i += Number(inputRef.step)) {
-    const newElement = `<div width="30px" height="30px" background-color="${getRandomHexColor()}"></div>`;
-      // `<div width="30px" height="30px" background-color="tomato"></div>`;
+    const newElement = 
+    `<div width="30px" height="30px" background-color="${getRandomHexColor()}"></div>`;
     newElements.push(newElement);
   }
 
   const markup = newElements.join("");
-  console.log(markup);
-  boxesRef.insertAdjacentHTML("afterbegin", markup);
+  // console.log(markup);
+  boxesRef.insertAdjacentHTML("beforeend", markup);
+  console.log(boxesRef);
 })
-console.log(boxesRef);
+console.log(document);
+
 
 
     

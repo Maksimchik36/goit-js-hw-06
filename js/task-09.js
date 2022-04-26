@@ -20,8 +20,9 @@ function changeColor(event) {
     return;
   }
   
-  colorBodyRef.textContent = `- ${getRandomHexColor()}`;
-  bodyRef.style.backgroundColor = `${getRandomHexColor()}`;
+  const color = getRandomHexColor();
+  colorBodyRef.textContent = `${color}`;
+  bodyRef.style.backgroundColor = color;
 
 }
 
