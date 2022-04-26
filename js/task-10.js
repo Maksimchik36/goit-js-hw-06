@@ -20,29 +20,27 @@ const btnDestroyRef = document.querySelector('button[data-destroy]');
 
 const boxesRef = document.querySelector("#boxes");
 
-// Присваивание значения input переменной amount
-// function quantity(){
-//   let amount = 0;
-//    return amount = Number(inputRef.value);
-// };
-
 btnCreateRef.addEventListener("click", () => {
   let amount = Number(inputRef.value);
 
   let newElements = [];
   for (let i = Number(inputRef.min); i <= amount; i += Number(inputRef.step)) {
     const newElement = 
-    `<div width="30px" height="30px" background-color="${getRandomHexColor()}"></div>`;
+    `<div class="cub" width="30px" height="30px" background-color="${getRandomHexColor()}"></div>`;
+
+    // алгоритм изменения размеров
+    // if(i !== 1){
+    //   console.log("!==1");
+    
+    // }
     newElements.push(newElement);
   }
 
   const markup = newElements.join("");
-  // console.log(markup);
+  console.log(markup);
   boxesRef.insertAdjacentHTML("beforeend", markup);
   console.log(boxesRef);
 })
-console.log(document);
 
-
-
-    
+// Удаляет все элементы внутри boxesRef
+btnDestroyRef.addEventListener("click", ()=> {boxesRef.innerHTML = "";
