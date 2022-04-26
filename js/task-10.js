@@ -43,4 +43,4 @@ btnCreateRef.addEventListener("click", () => {
 })
 
 // Удаляет все элементы внутри boxesRef
-btnDestroyRef.addEventListener("click", ()=> {boxesRef.innerHTML = "";
+btnDestroyRef.addEventListener("click", ()=> {boxesRef.innerHTML = "";})
