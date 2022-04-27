@@ -20,27 +20,54 @@ const btnDestroyRef = document.querySelector('button[data-destroy]');
 
 const boxesRef = document.querySelector("#boxes");
 
-btnCreateRef.addEventListener("click", () => {
-  let amount = Number(inputRef.value);
+// // // Создание коллекции элементов Вариант 1(с помощью createElement. !!! Особенности: ф-я getRandomHexColor выдает значение для background-color в формате RGB)
+// function createBoxes(amount) {
+  
+//     amount = Number(inputRef.value);
+
+//   boxesRef.classList.add("unit");
+
+//   let newElements = [];
+//   for (let i = Number(inputRef.min); i <= amount; i += Number(inputRef.step)) {
+    
+//     const newElement = document.createElement("div");
+//     const size = 20 + i * 10;
+//     newElement.style.width = `${size}px`;
+//     newElement.style.height = `${size}px`;
+//     newElement.style.backgroundColor = getRandomHexColor();
+//     newElement.classList.add("square");
+//     newElements.push(newElement);
+//   }
+//   boxesRef.append(...newElements);
+// }
+
+// // Создание коллекции элементов Вариант 2 (с помощью insertAdjacentHTML. !!! Особенности: ф-я getRandomHexColor выдает значение для background-color в формате HEX. !!! Все стили записываются внутрь style в в шаблонной строке)
+function createBoxes(amount) {
+  
+    amount = Number(inputRef.value); 
+
+  boxesRef.classList.add("unit");
 
   let newElements = [];
+  let size = 30;
   for (let i = Number(inputRef.min); i <= amount; i += Number(inputRef.step)) {
-    const newElement = 
-    `<div class="cub" width="30px" height="30px" background-color="${getRandomHexColor()}"></div>`;
-
-    // алгоритм изменения размеров
-    // if(i !== 1){
-    //   console.log("!==1");
     
-    // }
+    const newElement = `<div class="square" style="width: ${size}px; height: ${size}px; background-color: ${getRandomHexColor()};"></div>`
+;
+    size += 10;
     newElements.push(newElement);
   }
-
   const markup = newElements.join("");
-  console.log(markup);
-  boxesRef.insertAdjacentHTML("beforeend", markup);
-  console.log(boxesRef);
-})
+  boxesRef.insertAdjacentHTML("afterbegin", markup);
+}
 
-// Удаляет все элементы внутри boxesRef
-btnDestroyRef.addEventListener("click", ()=> {boxesRef.innerHTML = "";})
+btnCreateRef.addEventListener("click", createBoxes);
+
+// Удаляет все элементы внутри boxesRef и убирает класс стилизации родительского элемента
+function destroyBoxes(){
+  boxesRef.innerHTML = "";
+    boxesRef.classList.remove("unit");
+}
+
+btnDestroyRef.addEventListener("click", destroyBoxes);
+
