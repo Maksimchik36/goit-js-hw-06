@@ -58,7 +58,7 @@ function createBoxes(amount) {
     newElements.push(newElement);
   }
   const markup = newElements.join("");
-  boxesRef.insertAdjacentHTML("afterbegin", markup);
+  boxesRef.insertAdjacentHTML("beforeend", markup);
 }
 
 btnCreateRef.addEventListener("click", createBoxes);
